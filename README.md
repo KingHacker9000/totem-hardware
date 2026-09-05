@@ -59,7 +59,7 @@ Codex/other coding agents are expected to be used heavily during the hardware ph
 
 ## Generic vs private themed hardware
 
-This repository contains generic, redistributable mechanical designs. Franchise/character-specific cosmetic skins or geometry belong in a private/local hardware-skin repository and are not dependencies of Totem.
+This repository contains generic, redistributable mechanical designs. The user's character/franchise-specific cosmetic enclosure work lives separately in the private `KingHacker9000/totem-portal-hardware` repository. That private repository may reuse the generic chassis interfaces defined here, but it is not a dependency of Totem and proprietary/themed geometry must not be copied back into this public repository.
 
 ## Milestone order
 
