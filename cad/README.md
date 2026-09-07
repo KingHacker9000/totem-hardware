@@ -24,7 +24,7 @@ T910 should reuse `load_measurements()` and the component/feature lookup boundar
 From the repository root:
 
 ```bash
-python cad/build.py --verify-round-trip
+python -m cad.build --verify-round-trip
 python -m pytest cad/tests -q
 ```
 
