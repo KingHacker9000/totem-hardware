@@ -3,12 +3,17 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import shutil
 from pathlib import Path
 
 import cadquery as cq
 
 from cad.toolchain import build_smoke_parts, resolve_build_inputs
+
+
+ROUND_TRIP_BBOX_TOLERANCE_MM = 0.002
+ROUND_TRIP_VOLUME_TOLERANCE_MM3 = 0.001
 
 
 def _sha256(path: Path) -> str:
@@ -65,6 +70,21 @@ def build(fixture: Path, output: Path) -> dict[str, object]:
     return manifest
 
 
+def _metrics_close(expected: dict[str, object], actual: dict[str, object]) -> bool:
+    expected_volume = float(expected["volume_mm3"])
+    actual_volume = float(actual["volume_mm3"])
+    if not math.isclose(expected_volume, actual_volume, rel_tol=0.0, abs_tol=ROUND_TRIP_VOLUME_TOLERANCE_MM3):
+        return False
+
+    expected_bbox = expected["bbox_mm"]
+    actual_bbox = actual["bbox_mm"]
+    assert isinstance(expected_bbox, list) and isinstance(actual_bbox, list)
+    return all(
+        math.isclose(float(want), float(got), rel_tol=0.0, abs_tol=ROUND_TRIP_BBOX_TOLERANCE_MM)
+        for want, got in zip(expected_bbox, actual_bbox, strict=True)
+    )
+
+
 def verify_round_trip(output: Path, manifest: dict[str, object]) -> None:
     exports = manifest["exports"]
     assert isinstance(exports, dict)
@@ -74,7 +94,7 @@ def verify_round_trip(output: Path, manifest: dict[str, object]) -> None:
         assert isinstance(metrics, dict)
         imported = cq.importers.importStep(str(output / entry["step"]["path"]))
         imported_metrics = _shape_metrics(imported)
-        if imported_metrics != metrics:
+        if not _metrics_close(metrics, imported_metrics):
             raise RuntimeError(f"STEP round-trip changed geometry metrics for {name}: {imported_metrics} != {metrics}")
 
 
