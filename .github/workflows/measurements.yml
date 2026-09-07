@@ -27,3 +27,7 @@ jobs:
           python3 measurements/validate.py \
             measurements/prototype-v1.template.json \
             measurements/examples/synthetic.json
+      - name: Validate prototype part-intake template
+        run: |
+          python3 -m json.tool measurements/prototype-v1.intake.template.json >/dev/null
+          python3 measurements/validate_intake.py measurements/prototype-v1.intake.template.json
