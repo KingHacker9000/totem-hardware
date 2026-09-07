@@ -33,6 +33,6 @@ jobs:
       - name: Run CAD helper tests
         run: python -m pytest cad/tests -q
       - name: Build and round-trip synthetic exports
-        run: python cad/build.py --verify-round-trip
+        run: python -m cad.build --verify-round-trip
       - name: Show export manifest
         run: cat cad/build/manifest.json
