@@ -4,9 +4,14 @@ Generic reference hardware, enclosure engineering, CAD, electronics, and print d
 
 ## Current phase
 
-Totem is **software-first**. This repository is initialized now so hardware requirements are recorded, but detailed CAD work intentionally starts later, after the PC software stack and Pi deployment requirements are understood.
+The software platform and first prototype BOM are established. Hardware work is now progressing through **measured, gated physical integration**: selected components are documented, the wiring/power/acoustics plan is ready, and final CAD remains blocked until actual purchased parts are measured.
 
-When hardware work begins, the enclosure will be designed as a **parametric, modular system**, not as one monolithic STL.
+Current public prototype artifacts:
+
+- [`bom/prototype-v1.md`](bom/prototype-v1.md) — selected generic prototype v1 components, alternatives, procurement order, and the physical data that must be measured before CAD.
+- [`docs/prototype-v1-integration.md`](docs/prototype-v1-integration.md) — power budget, GPIO allocation, wiring/harness strategy, physical microphone privacy behavior, acoustics/cooling rules, service access, and bench-test sequence.
+
+Final enclosure geometry must still be derived from **real measurements**, not vendor dimensions alone.
 
 ## Planned scope
 
@@ -35,16 +40,16 @@ print-profiles/
 docs/
 ```
 
-## Physical design requirements already known
+## Physical design requirements
 
-The future design must account for:
+The design accounts for:
 
 - Raspberry Pi 5 and active cooling
 - inexpensive rectangular/square touchscreen hidden behind a configurable circular bezel/mask
 - touch access and cable clearance
 - speaker, amplifier/DAC, acoustic chamber, grille, and vibration isolation
-- microphone hardware/array, acoustic openings, and separation from speaker/fan
-- addressable LEDs, diffusion, hotspot control, and light-bleed prevention
+- microphone hardware/array, acoustic openings, physical privacy control, and separation from speaker/fan
+- addressable LEDs, diffusion, hotspot control, current limiting, and light-bleed prevention
 - airflow, intake/exhaust, fan noise, heatsink clearance, and serviceability
 - rear I/O for power, Ethernet, external USB HDD, spare USB, and service access
 - cable bend radii and connector access
@@ -55,7 +60,7 @@ The future design must account for:
 
 The final enclosure will be derived from **real measurements** of selected components. CadQuery or another code-friendly parametric CAD approach is preferred so dimensions can be updated reproducibly.
 
-Codex/other coding agents are expected to be used heavily during the hardware phase for parametric CAD generation, variant exploration, geometry checks, documentation, and parallel engineering analysis. The first physical prints should be small fit/tolerance coupons before full enclosure prototypes.
+The physical workflow is intentionally gated: prepare integration requirements, measure the actual components, then generate parametric CAD and small fit/tolerance coupons before full enclosure prints. Final CAD must not be generated from guessed dimensions.
 
 ## Generic vs private themed hardware
 
@@ -63,13 +68,13 @@ This repository contains generic, redistributable mechanical designs. The user's
 
 ## Milestone order
 
-1. finish software architecture and PC simulator
-2. validate software requirements
-3. deploy to Pi 5
-4. select low-cost hardware components
-5. measure actual parts with calipers
-6. generate parametric CAD
+1. software architecture and PC simulator — complete
+2. Pi software/deployment preparation — complete; real-device evidence is tracked separately
+3. select low-cost prototype hardware components — complete
+4. prepare wiring/power/acoustics/bench-integration plan — complete
+5. measure actual purchased parts with calipers
+6. generate parametric CAD from measured interfaces
 7. print fit coupons
 8. prototype chassis/enclosure
-9. test thermals, acoustics, lighting, touch, and serviceability
+9. test thermals, acoustics, lighting, touch, privacy controls, and serviceability
 10. publish generic production-ready hardware files
