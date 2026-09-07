@@ -1,0 +1,198 @@
+{
+  "schema_version": "totem.measurements/v1",
+  "dataset_status": "template",
+  "non_production": true,
+  "prototype": "prototype-v1",
+  "units": "mm",
+  "captured_at": null,
+  "captured_by": null,
+  "notes": "Blank T909 capture template. Null values are intentional and MUST be replaced by physical measurements before CAD-driving use.",
+  "datum_convention": {
+    "origin": "Component-specific lower-left datum on the primary mounting/reference face unless the component entry states otherwise.",
+    "axes": {
+      "x": "+X right when viewing the nominated primary face",
+      "y": "+Y up when viewing the nominated primary face",
+      "z": "+Z outward from the nominated primary face"
+    },
+    "orientation_rule": "Record every feature in the component's declared viewing orientation; never mirror coordinates to match enclosure orientation. CAD adapters perform transforms explicitly."
+  },
+  "components": [
+    {
+      "id": "raspberry_pi_5",
+      "selected_part": "Raspberry Pi 5",
+      "serial_or_lot": null,
+      "orientation": "Top/component side facing viewer; USB/Ethernet edge to +X; PCB lower-left corner is XY datum; PCB bottom surface is Z=0.",
+      "measurements": [
+        {"name":"pcb_width_x","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"pcb_height_y","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"pcb_thickness","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"installed_standoff_stack","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"mounting_holes","kind":"mount_hole","measurements":[{"name":"hole_centers_and_diameters","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":"Record each hole X/Y center and diameter as separate repeated measurements when capturing."}],"notes":null},
+        {"name":"usb_ethernet_stack","kind":"connector","measurements":[{"name":"connector_and_plug_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":"Capture connector projection plus actual plug/strain relief service envelope."}],"notes":null},
+        {"name":"usb_c_power","kind":"connector","measurements":[{"name":"plug_body_and_bend_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"micro_hdmi","kind":"connector","measurements":[{"name":"connector_positions_and_plug_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"microsd_access","kind":"service_envelope","measurements":[{"name":"card_removal_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"fan_header","kind":"cable_exit","measurements":[{"name":"connector_and_wire_sweep","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "active_cooler",
+      "selected_part": "Official Raspberry Pi 5 Active Cooler",
+      "serial_or_lot": null,
+      "orientation": "Installed on measured Pi; use Pi datum and record cooler envelope in that coordinate frame.",
+      "measurements": [
+        {"name":"installed_height_above_pcb","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"footprint_x","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"footprint_y","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"blower_intake","kind":"keepout","measurements":[{"name":"required_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"blower_exhaust","kind":"keepout","measurements":[{"name":"required_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "touch_display_2_5in",
+      "selected_part": "Raspberry Pi Touch Display 2, 5-inch",
+      "serial_or_lot": null,
+      "orientation": "Front/glass face toward viewer, portrait orientation; outer glass lower-left is XY datum; front glass plane is Z=0 and rearward stack is negative Z.",
+      "measurements": [
+        {"name":"glass_width_x","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"glass_height_y","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"total_stack_depth","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"active_visible_area","kind":"active_area","measurements":[{"name":"x_y_width_height_from_glass_datum","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":"Capture four scalars: origin X/Y and width/height."}],"notes":"Also verify touch response near proposed circular masking boundary."},
+        {"name":"mounting_holes","kind":"mount_hole","measurements":[{"name":"hole_centers_diameters_and_stack","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"dsi_connector","kind":"connector","measurements":[{"name":"connector_position_and_ffc_bend_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"power_connector","kind":"connector","measurements":[{"name":"connector_and_wire_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "respeaker_lite",
+      "selected_part": "Seeed reSpeaker Lite (XU316)",
+      "serial_or_lot": null,
+      "orientation": "Component side facing viewer; microphone edge at +Y; PCB lower-left corner is XY datum; PCB bottom surface is Z=0.",
+      "measurements": [
+        {"name":"pcb_width_x","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"pcb_height_y","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"max_component_height_z","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"microphones","kind":"acoustic_center","measurements":[{"name":"mic_center_coordinates_and_port_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"usb","kind":"connector","measurements":[{"name":"connector_and_plug_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"speaker_output","kind":"connector","measurements":[{"name":"position_and_wire_exit","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"mute_control","kind":"service_envelope","measurements":[{"name":"access_keepout","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "speaker",
+      "selected_part": "Purchased 4 ohm 3-5 W enclosed speaker",
+      "serial_or_lot": null,
+      "orientation": "Acoustic/front face toward viewer; enclosure lower-left is XY datum; front face is Z=0.",
+      "measurements": [
+        {"name":"enclosure_width_x","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"enclosure_height_y","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"depth_z","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"mounting_holes","kind":"mount_hole","measurements":[{"name":"centers_and_diameters","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"front_clearance","kind":"keepout","measurements":[{"name":"diaphragm_grille_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"rear_and_wire_clearance","kind":"service_envelope","measurements":[{"name":"rear_vent_wire_bend_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "led_ring",
+      "selected_part": "Purchased 24-pixel WS2812B/SK6812 ring or selected equivalent",
+      "serial_or_lot": null,
+      "orientation": "LED side facing viewer; ring center is XY origin; PCB front plane is Z=0.",
+      "measurements": [
+        {"name":"outer_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"inner_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"max_thickness","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"pads_and_wire_exit","kind":"cable_exit","measurements":[{"name":"pad_locations_and_bend_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"diffuser","kind":"keepout","measurements":[{"name":"minimum_hotspot_hiding_standoff","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":"Determine experimentally with intended diffuser material."}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "momentary_buttons",
+      "selected_part": "2 x purchased 16 mm panel-mount momentary NO buttons",
+      "serial_or_lot": null,
+      "orientation": "Panel face is Z=0; button axis is Z; center is XY origin.",
+      "measurements": [
+        {"name":"required_panel_cutout","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"bezel_outer_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"retainer_stack_depth","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"terminals","kind":"service_envelope","measurements":[{"name":"terminal_and_connector_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "privacy_switch",
+      "selected_part": "Purchased maintained two-position mic privacy switch",
+      "serial_or_lot": null,
+      "orientation": "Panel face is Z=0; actuator axis is Z; center is XY origin.",
+      "measurements": [
+        {"name":"required_panel_cutout","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"bezel_or_body_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"rear_depth","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [
+        {"name":"terminals","kind":"service_envelope","measurements":[{"name":"terminal_wire_connector_clearance","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "power_and_service_cables",
+      "selected_part": "Actual installed USB-C power / Ethernet / USB service plugs and strain reliefs",
+      "serial_or_lot": null,
+      "orientation": "Measure relative to the mating connector datum on the installed assembly.",
+      "measurements": [],
+      "features": [
+        {"name":"usb_c_power","kind":"service_envelope","measurements":[{"name":"plug_shell_body_and_minimum_bend_radius","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"ethernet","kind":"service_envelope","measurements":[{"name":"plug_shell_latch_and_strain_relief_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null},
+        {"name":"usb_service","kind":"service_envelope","measurements":[{"name":"largest_intended_plug_and_bend_envelope","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}],"notes":null}
+      ],
+      "photos": [],
+      "notes": null
+    },
+    {
+      "id": "fasteners_and_inserts",
+      "selected_part": "Actual M2.5/M3 screws and heat-set inserts for selected printer/process",
+      "serial_or_lot": null,
+      "orientation": "Measure along fastener axis as Z; radial sizes are diameters.",
+      "measurements": [
+        {"name":"insert_outer_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"insert_length","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null},
+        {"name":"screw_head_max_diameter","value_mm":null,"source":"unmeasured","cad_driving":true,"method":null,"tool":null,"uncertainty_mm":null,"reference":null,"notes":null}
+      ],
+      "features": [],
+      "photos": [],
+      "notes": null
+    }
+  ],
+  "fit_coupons": [
+    {"id":"m25_clearance","purpose":"M2.5 screw clearance-hole fit","nominal_mm":2.7,"measured_mm":null,"result":"not_tested","printer_profile":null,"notes":"Nominal is a synthetic coupon starting point, not a CAD-driving measured result."},
+    {"id":"m3_clearance","purpose":"M3 screw clearance-hole fit","nominal_mm":3.2,"measured_mm":null,"result":"not_tested","printer_profile":null,"notes":"Nominal is a synthetic coupon starting point, not a CAD-driving measured result."},
+    {"id":"insert_pocket","purpose":"Heat-set insert pocket fit","nominal_mm":4.0,"measured_mm":null,"result":"not_tested","printer_profile":null,"notes":"Replace nominal with the chosen insert vendor recommendation before printing; only measured coupon outcome may drive final tolerance."}
+  ]
+}
