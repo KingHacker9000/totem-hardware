@@ -8,7 +8,7 @@ from pathlib import Path
 
 import cadquery as cq
 
-from toolchain import build_smoke_parts, resolve_build_inputs
+from cad.toolchain import build_smoke_parts, resolve_build_inputs
 
 
 def _sha256(path: Path) -> str:
