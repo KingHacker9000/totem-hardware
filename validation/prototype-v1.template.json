@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "run_id": "prototype-v1-YYYYMMDDTHHMMSSZ-stage",
+  "started_at": "1970-01-01T00:00:00Z",
+  "completed_at": null,
+  "stage": "pre-power",
+  "scope": {
+    "generic_public": true,
+    "private_cosmetic": false
+  },
+  "hardware_revision": null,
+  "measurement_record": null,
+  "cad_revision": null,
+  "totem_revision": null,
+  "operator": null,
+  "results": [],
+  "artifacts": [],
+  "overall_status": "IN_PROGRESS"
+}
