@@ -13,6 +13,9 @@ on:
       - "measurements/**"
       - ".github/workflows/cad-toolchain.yml"
 
+permissions:
+  contents: read
+
 jobs:
   synthetic-cad:
     runs-on: ubuntu-latest
