@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from toolchain import (
+from cad.toolchain import (
     CadInputError,
     axis_aligned_clearance_mm,
     build_smoke_parts,
