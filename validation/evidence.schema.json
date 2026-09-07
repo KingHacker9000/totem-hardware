@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://totem.local/schemas/prototype-validation-evidence-v1.json",
+  "title": "Totem prototype validation evidence v1",
+  "type": "object",
+  "required": ["schema_version", "run_id", "started_at", "stage", "scope", "results", "artifacts"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"type": "string", "minLength": 1},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": ["string", "null"], "format": "date-time"},
+    "stage": {"enum": ["pre-power", "bench-display", "bench-audio", "bench-controls", "bench-led", "pre-enclosure-burnin", "enclosure-fit", "enclosure-burnin", "final"]},
+    "scope": {
+      "type": "object",
+      "required": ["generic_public", "private_cosmetic"],
+      "properties": {
+        "generic_public": {"type": "boolean"},
+        "private_cosmetic": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "hardware_revision": {"type": ["string", "null"]},
+    "measurement_record": {"type": ["string", "null"]},
+    "cad_revision": {"type": ["string", "null"]},
+    "totem_revision": {"type": ["string", "null"]},
+    "operator": {"type": ["string", "null"]},
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "status", "observed_at", "summary"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "category": {"enum": ["power", "display", "touch", "audio", "privacy", "controls", "led", "thermal", "serviceability", "mechanical", "software"]},
+          "status": {"enum": ["PASS", "FAIL", "BLOCKED", "SKIP"]},
+          "observed_at": {"type": "string", "format": "date-time"},
+          "summary": {"type": "string"},
+          "measurement": {
+            "type": ["object", "null"],
+            "properties": {
+              "value": {"type": ["number", "string", "boolean", "null"]},
+              "unit": {"type": ["string", "null"]},
+              "method": {"type": ["string", "null"]}
+            },
+            "additionalProperties": false
+          },
+          "artifacts": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "kind"],
+        "properties": {
+          "path": {"type": "string"},
+          "kind": {"enum": ["command-output", "journal", "photo", "audio", "video", "measurement", "other"]},
+          "sha256": {"type": ["string", "null"]},
+          "source_command": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "overall_status": {"enum": ["PASS", "FAIL", "BLOCKED", "IN_PROGRESS"]}
+  },
+  "additionalProperties": false
+}
