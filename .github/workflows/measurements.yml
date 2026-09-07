@@ -1,0 +1,29 @@
+name: measurement-data
+
+on:
+  push:
+    paths:
+      - "measurements/**"
+      - ".github/workflows/measurements.yml"
+  pull_request:
+    paths:
+      - "measurements/**"
+      - ".github/workflows/measurements.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate checked-in measurement data
+        run: |
+          python3 -m json.tool measurements/schema/v1.schema.json >/dev/null
+          python3 measurements/validate.py \
+            measurements/prototype-v1.template.json \
+            measurements/examples/synthetic.json
