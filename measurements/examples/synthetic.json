@@ -1,0 +1,35 @@
+{
+  "schema_version": "totem.measurements/v1",
+  "dataset_status": "synthetic",
+  "non_production": true,
+  "prototype": "prototype-v1",
+  "units": "mm",
+  "captured_at": null,
+  "captured_by": "synthetic-fixture",
+  "notes": "NON-PRODUCTION SYNTHETIC DATA. These values exist only to exercise validators/tooling and MUST NOT be used for Totem CAD.",
+  "datum_convention": {
+    "origin": "Synthetic lower-left datum",
+    "axes": {"x": "+X right", "y": "+Y up", "z": "+Z outward"},
+    "orientation_rule": "Synthetic fixture only"
+  },
+  "components": [
+    {
+      "id": "synthetic_box",
+      "selected_part": "SYNTHETIC TEST BOX - NOT A BOM COMPONENT",
+      "serial_or_lot": null,
+      "orientation": "Synthetic front face",
+      "measurements": [
+        {"name":"width","value_mm":100.0,"source":"reference","cad_driving":false,"method":null,"tool":null,"uncertainty_mm":null,"reference":"synthetic","notes":"Not a real dimension"},
+        {"name":"height","value_mm":50.0,"source":"derived","cad_driving":false,"method":null,"tool":null,"uncertainty_mm":null,"reference":"synthetic","notes":"Not a real dimension"}
+      ],
+      "features": [
+        {"name":"test_hole","kind":"mount_hole","measurements":[{"name":"diameter","value_mm":3.0,"source":"reference","cad_driving":false,"method":null,"tool":null,"uncertainty_mm":null,"reference":"synthetic","notes":"Validator fixture only"}],"notes":null}
+      ],
+      "photos": [],
+      "notes": "Synthetic only"
+    }
+  ],
+  "fit_coupons": [
+    {"id":"synthetic_coupon","purpose":"Validator smoke test","nominal_mm":10.0,"measured_mm":null,"result":"not_tested","printer_profile":null,"notes":"Synthetic only"}
+  ]
+}
