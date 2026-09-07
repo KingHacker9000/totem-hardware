@@ -32,6 +32,24 @@ The build clears `cad/build/`, emits STEP and STL for two deliberately abstract 
 
 CadQuery's STEP/STL exporters are the supported deterministic-from-source outputs for this prep lane. 3MF is deliberately not promised by this pinned path; T910 may add it only if the selected exporter is validated rather than generating an unverified file.
 
+## Reproducible package provenance
+
+`cad.package` wraps a completed build in the versioned `totem.cad-package/v1` provenance contract. It records the source revision, explicit generation timestamp, input fixture identity/hash, pinned toolchain requirements hash, build-manifest hash, and the complete generated artifact set with SHA-256 hashes.
+
+For the synthetic smoke build:
+
+```bash
+python -m cad.build --verify-round-trip
+python -m cad.package \
+  --source-revision "$(git rev-parse HEAD)" \
+  --generated-at "2026-09-07T04:00:00Z"
+python -m cad.package --verify
+```
+
+Use a stable release timestamp (for example the release commit/tag timestamp) when reproducibility across rebuilds matters. Verification fails if the fixture, pinned requirements, build manifest, artifact set, or any artifact hash changes after packaging.
+
+The current package path intentionally accepts only `non_production: true` synthetic build manifests. T910 must preserve the same identity/hash semantics when it introduces production measured CAD, while deliberately extending the contract to identify the completed T909 measured dataset. Removing this guardrail before T909 is complete would falsely imply that synthetic geometry represents physical fit.
+
 ## Clearance/collision helpers
 
 `collision_volume()` uses solid intersection volume. `axis_aligned_clearance_mm()` returns the smallest positive AABB separation and returns zero for collision/contact. The tests exercise both a known-clear and known-colliding synthetic pair. These helpers are scaffolding, not a substitute for later measured-part clearance checks.
